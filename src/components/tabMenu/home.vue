@@ -3,10 +3,11 @@
  * @Author: xsnowholy 
  * @Date: 2019-03-23 15:01:48 
  * @Last Modified by: xsnowholy
- * @Last Modified time: 2019-03-24 20:03:20
+ * @Last Modified time: 2019-03-24 21:08:12
  */
 <template>
   <view-box body-padding-bottom="0px" ref="viewBox">
+    <home-search class="search" :active="SearchActive"></home-search>
     <swiper :aspect-ratio="360/640" auto :duration="500" :interval="6000" loop>
       <swiper-item class="swiper-demo-img" v-for="(item, index) in carouselList" :key="index">
         <img style="width:100%;" :src="item.img">
@@ -81,6 +82,7 @@
 import { ViewBox, Swiper, SwiperItem } from "vux";
 import CurriculumItem from "@/components/public/CurriculumItem";
 import CoursesItem from "@/components/public/CoursesItem";
+import HomeSearch from "@/components/public/HomeSearch";
 export default {
   data() {
     return {
@@ -89,7 +91,8 @@ export default {
       menuList: [],
       itList: null,
       language: null,
-      coursesList: null
+      coursesList: null,
+      SearchActive: false
     };
   },
 
@@ -98,7 +101,8 @@ export default {
     SwiperItem,
     CurriculumItem,
     ViewBox,
-    CoursesItem
+    CoursesItem,
+    HomeSearch
   },
 
   computed: {},
@@ -130,11 +134,24 @@ export default {
   methods: {
     getScrollTop() {
       console.log("滚动距离", this.$refs.viewBox.getScrollTop());
+      let height = this.$refs.viewBox.getScrollTop();
+      if(height > 100) {
+        this.SearchActive = true
+      } else {
+        this.SearchActive = false
+      }
     }
   }
 };
 </script>
 <style lang='less' scoped>
+.search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
 .menu-box {
   background: #fff;
   display: flex;

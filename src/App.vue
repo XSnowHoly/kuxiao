@@ -6,14 +6,23 @@
 
 <script>
 export default {
-  name: 'app'
-}
+  name: "app"
+};
 </script>
 
 <style lang="less">
-@import '~vux/src/styles/reset.less';
-ul,li {
+@import "~vux/src/styles/reset.less";
+ul,
+li {
   list-style-type: none;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 body {
   background-color: #fbf9fe;
