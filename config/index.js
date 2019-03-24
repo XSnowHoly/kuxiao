@@ -10,7 +10,14 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/': {
+        // target: 'http://mobilehospital.vaiwan.com/',  // 你请求的api地址
+        target: 'https://pes2.kuxiao.cn',  // 你请求的api地址
+        secure: true,                             // 如果是https接口，需要配置这个参数
+        changeOrigin: true                         // 接口跨域需要配置这个
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
