@@ -3,11 +3,14 @@
  * @Author: xsnowholy 
  * @Date: 2019-03-23 15:01:48 
  * @Last Modified by: xsnowholy
- * @Last Modified time: 2019-03-24 13:31:36
+ * @Last Modified time: 2019-03-24 21:29:12
  */
 <template>
   <view-box ref="viewBox" body-padding-top="0" body-padding-bottom="50px">
-    <router-view></router-view>
+    <keep-alive>
+      <router-view v-if="$route.meta.KeepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.KeepAlive"></router-view>
     <tabbar>
       <tabbar-item selected link="/index/">
         <img slot="icon-active" src="../../assets/main_aty_home__bluepress.png">

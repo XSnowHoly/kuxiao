@@ -23,22 +23,34 @@ export default new Router({
         {
           path: 'home',
           name: 'Home',
-          component: Home
+          component: Home,
+          meta: {
+            KeepAlive: true
+          }
         },
         {
           path: 'study',
           name: 'Study',
-          component: Study
+          component: Study,
+          meta: {
+            KeepAlive: true
+          }
         },
         {
           path: 'message',
           name: 'Message',
-          component: Message
+          component: Message,
+          meta: {
+            KeepAlive: true
+          }
         },
         {
           path: 'user',
           name: 'User',
-          component: User
+          component: User,
+          meta: {
+            KeepAlive: true
+          }
         },
       ]
     }
